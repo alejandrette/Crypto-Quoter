@@ -5,6 +5,7 @@ import { useCrypto } from "../store/store";
 
 export function Form() {
   const fetchCryptos = useCrypto(state => state.fetchCryptos)
+  const fetchData = useCrypto(state => state.fetchData)
   const cryptos = useCrypto(state => state.cryptos)
   const [alert, setAlert] = useState<string>('')
   const [cryptocurrency, setCryptocurrency] = useState<CryptoCurrency>({
@@ -30,6 +31,8 @@ export function Form() {
       setTimeout(() => {
         setAlert('')
       }, 3000);
+    } else {
+      fetchData(cryptocurrency)
     }
   }
 
