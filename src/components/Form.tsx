@@ -1,12 +1,20 @@
-import { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { currencies } from "../data/currency";
+import { CryptoCurrency } from "../types";
+import { useCrypto } from "../store/store";
 
 export function Form() {
-  const [alert, setAlert] = useState('')
-  const [cryptocurrency, setCryptocurrency] = useState({
+  const fetchCryptos = useCrypto(state => state.fetchCryptos)
+  const cryptos = useCrypto(state => state.cryptos)
+  const [alert, setAlert] = useState<string>('')
+  const [cryptocurrency, setCryptocurrency] = useState<CryptoCurrency>({
     currency: '',
     crypto: '',
   })
+
+  useEffect(() => {
+    fetchCryptos()
+  }, [])
 
   const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
     setCryptocurrency({
@@ -23,7 +31,6 @@ export function Form() {
         setAlert('')
       }, 3000);
     }
-
   }
 
   return (
@@ -52,7 +59,9 @@ export function Form() {
           onChange={handleChange}
         >
           <option value='' disabled>-- Select --</option>
-          {}
+          {cryptos.map(cryto => (
+            <option key={cryto.CoinInfo.Id} value={cryto.CoinInfo.Name}>{cryto.CoinInfo.FullName}</option>
+          ))}
         </select>
 
         <button className="bg-emerald-400 p-2 rounded-lg text-white font-bold">Quote</button>
