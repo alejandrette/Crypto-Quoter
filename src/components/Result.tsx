@@ -22,9 +22,9 @@ export function Result() {
 
           <div className="ml-4 space-y-2">
             <p>The Price is: <span className="font-bold">{cryptosData.PRICE}</span></p>
-            <p>Highest price of the day: <span className="font-bold">{cryptosData.HIGHDAY}</span></p>
-            <p>Lowest price of the day: <span className="font-bold">{cryptosData.LOWDAY}</span></p>
-            <p>Variation last 24 hours: <span className="font-bold">{cryptosData.CHANGE24HOUR}</span></p>
+            <p>Highest price: <span className="font-bold">{cryptosData.HIGHDAY}</span></p>
+            <p>Lowest price: <span className="font-bold">{cryptosData.LOWDAY}</span></p>
+            <p>Last 24 hours: <span className="font-bold">{cryptosData.CHANGE24HOUR}</span></p>
             <p>Last update: <span className="font-bold">{cryptosData.LASTUPDATE}</span></p>
           </div>
         </div>
