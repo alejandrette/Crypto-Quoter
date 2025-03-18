@@ -7,6 +7,7 @@ export function Form() {
   const fetchCryptos = useCrypto(state => state.fetchCryptos)
   const fetchData = useCrypto(state => state.fetchData)
   const cryptos = useCrypto(state => state.cryptos)
+  const cryptosData = useCrypto(state => state.cryptosData)
   const [alert, setAlert] = useState<string>('')
   const [cryptocurrency, setCryptocurrency] = useState<CryptoCurrency>({
     currency: '',
@@ -15,7 +16,7 @@ export function Form() {
 
   useEffect(() => {
     fetchCryptos()
-  }, [])
+  }, [fetchCryptos])
 
   const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
     setCryptocurrency({
@@ -28,16 +29,15 @@ export function Form() {
     e.preventDefault()
     if(Object.values(cryptocurrency).includes('')){
       setAlert('Filed Empty')
-      setTimeout(() => {
-        setAlert('')
-      }, 3000);
-    } else {
-      fetchData(cryptocurrency)
+      setTimeout(() => setAlert(''), 3000)
+      return
     }
+    
+    fetchData(cryptocurrency)
   }
 
   return (
-    <div className="w-80 bg-white text-black p-4 rounded-lg m-5">
+    <div className={`w-80 bg-white text-black p-4 mt-5 ${Object.keys(cryptosData).length > 0 ? 'rounded-t-lg' : 'rounded-lg'}`}>
       <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
         {alert && <p className="bg-red-500 text-center font-bold text-white rounded-lg p-2">{alert}</p>}
 

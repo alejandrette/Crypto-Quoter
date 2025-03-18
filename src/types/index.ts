@@ -15,3 +15,12 @@ export type Cryptos = {
     FullName: string;
   }
 }
+
+export type CryptosData = {
+  IMAGEURL: string;
+  PRICE: string;
+  HIGHDAY: string;
+  LOWDAY: string;
+  CHANGE24HOUR: string;
+  LASTUPDATE: string;
+}
