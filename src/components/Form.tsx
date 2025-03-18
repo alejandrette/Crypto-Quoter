@@ -37,14 +37,14 @@ export function Form() {
   }
 
   return (
-    <div className={`w-80 bg-white text-black p-4 mt-5 ${Object.keys(cryptosData).length > 0 ? 'rounded-t-lg' : 'rounded-lg'}`}>
+    <div className={`w-80 md:w-1/4 bg-white text-black p-4 mt-5 ${Object.keys(cryptosData).length > 0 ? 'rounded-t-lg' : 'rounded-lg'}`}>
       <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
         {alert && <p className="bg-red-500 text-center font-bold text-white rounded-lg p-2">{alert}</p>}
 
         <label htmlFor="currency" className="font-bold">Currency</label>
         <select 
           name="currency"
-          className="bg-transparent text-gray-600"
+          className="bg-transparent text-gray-600 border-blue border rounded-md bg-white focus:ring-2 focus:ring-blue-400 outline-none"
           value={cryptocurrency.currency}
           onChange={handleChange}
         >
@@ -57,7 +57,7 @@ export function Form() {
         <label htmlFor="crypto" className="font-bold">Crypto</label>
         <select 
           name="crypto" 
-          className="bg-transparent text-gray-600"
+          className="bg-transparent text-gray-600 border-blue border rounded-md bg-white focus:ring-2 focus:ring-blue-400 outline-none"
           value={cryptocurrency.crypto}  
           onChange={handleChange}
         >

@@ -13,17 +13,17 @@ export function Result() {
   return (
     <>
       {isEmpty ? (
-        <div className="bg-white grid grid-cols-[25%_75%] w-80 text-black p-4 rounded-b-lg">
+        <div className="w-80 md:w-1/4 bg-white grid grid-cols-[25%_75%] text-black p-4 rounded-b-lg">
           <div className="flex items-center justify-center">
             <img src={`https://cryptocompare.com${cryptosData.IMAGEURL}`} alt={`jk`} width={100} />
           </div>
 
-          <div className="ml-4">
-            <p className="font-bold">The Price is: <span className="font-normal">{cryptosData.PRICE}</span></p>
-            <p className="font-bold">The Price is: <span className="font-normal">{cryptosData.HIGHDAY}</span></p>
-            <p className="font-bold">The Price is: <span className="font-normal">{cryptosData.LOWDAY}</span></p>
-            <p className="font-bold">The Price is: <span className="font-normal">{cryptosData.CHANGE24HOUR}</span></p>
-            <p className="font-bold">The Price is: <span className="font-normal">{cryptosData.LASTUPDATE}</span></p>
+          <div className="ml-4 space-y-2">
+            <p>The Price is: <span className="font-bold">{cryptosData.PRICE}</span></p>
+            <p>Highest price of the day: <span className="font-bold">{cryptosData.HIGHDAY}</span></p>
+            <p>Lowest price of the day: <span className="font-bold">{cryptosData.LOWDAY}</span></p>
+            <p>Variation last 24 hours: <span className="font-bold">{cryptosData.CHANGE24HOUR}</span></p>
+            <p>Last update: <span className="font-bold">{cryptosData.LASTUPDATE}</span></p>
           </div>
         </div>
       ) : (
@@ -31,5 +31,4 @@ export function Result() {
       )}
     </>
   );
-  
 }
