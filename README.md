@@ -1,54 +1,89 @@
-# React + TypeScript + Vite
+# 💰 Crypto Quoter
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Bienvenido a **Crypto Quoter**, una aplicación web que permite consultar en tiempo real el valor de diversas criptomonedas en distintas monedas fiduciarias. 🚀  
 
-Currently, two official plugins are available:
+## 🔗 Demo en Vivo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Prueba la aplicación en vivo haciendo clic en el siguiente enlace:  
 
-## Expanding the ESLint configuration
+🔗 [Demo en vivo](https://cryptocurrency-alejandrette.netlify.app/)  
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## ⚙️ Tecnologías Utilizadas
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+- **React ⚛️**: Biblioteca para construir interfaces de usuario interactivas y dinámicas.  
+- **TypeScript 📝**: Mejora la seguridad y mantenibilidad del código mediante tipado estático.  
+- **Vite ⚡**: Herramienta de desarrollo ultrarrápida para aplicaciones modernas.  
+- **Zustand 🧩**: Librería ligera para gestionar el estado global de la aplicación.  
+- **Axios 🔄**: Cliente HTTP para realizar solicitudes a la API de CryptoCompare.  
+- **Tailwind CSS 🎨**: Framework de diseño para crear una interfaz moderna y responsiva.  
+
+## 🌍 Características
+
+✔ **Consulta en tiempo real** 📊  
+Obtén información sobre el precio actual, máximo y mínimo del día, variación en 24 horas y última actualización.  
+
+✔ **Selección de Criptomonedas y Monedas Fiat** 💱  
+Elige entre una variedad de criptomonedas y monedas fiduciarias para realizar la conversión.  
+
+✔ **Gestión del Estado con Zustand** 🔄  
+La aplicación mantiene los datos de consulta utilizando **Zustand**, lo que la hace más eficiente.  
+
+✔ **Diseño Responsivo** 📱💻  
+Adaptado para funcionar en dispositivos móviles, tabletas y escritorios.  
+
+## 📦 Instalación y Uso
+
+- 1️ Clona el repositorio  
+
+```bash
+git clone https://github.com/alejandrette/Crypto-Quoter.git
+cd Crypto-Quoter
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- 2️ Instala las dependencias
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+```bash
+npm install
 ```
+
+-3 Ejecuta la aplicación
+
+```bash
+npm run dev
+```
+
+La aplicación se ejecutará en `http://localhost:5173` 🚀
+
+### 📑 Funcionamiento de la Aplicación
+
+- 1 Seleccionar Moneda y Criptomoneda
+  - Escoge la moneda fiduciaria de referencia (USD, EUR, etc.).
+  - Selecciona la criptomoneda que deseas cotizar (Bitcoin, Ethereum, etc.).
+- 2️ Obtener Cotización
+  - Haz clic en el botón "Quote" para obtener los valores en tiempo real.
+- 3️ Ver Información
+  - Se mostrará el precio actual, los valores más altos y bajos del día, la variación en 24 horas y la última actualización.
+
+### 📚 Gestión de Estado con Zustand
+
+La aplicación usa Zustand para manejar el estado de las criptomonedas y sus datos de cotización.
+
+```ts
+export const useCrypto = create<CryptoState>((set) => ({
+  cryptos: [],
+  cryptosData: {} as CryptosData,
+  fetchCryptos: async () => { ... },
+  fetchData: async (cryptocurrency) => { ... }
+}));
+```
+
+### 🚀 Desarrollo Futuro
+
+- 🔹 Historial de Cotizaciones 📜
+Guardar las cotizaciones realizadas para futuras consultas.
+
+- 🔹 Autenticación de Usuarios 🔑
+Permitir a los usuarios guardar sus criptomonedas favoritas.
+
+- 🔹 Notificaciones y Alertas 📩
+Configurar alertas de precios para criptomonedas específicas.
