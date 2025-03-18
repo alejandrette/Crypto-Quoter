@@ -1,8 +1,10 @@
 import { useEffect, useMemo } from "react"
 import { useCrypto } from "../store/store"
+import { SyncLoader } from "react-spinners";
 
 export function Result() {
   const cryptosData = useCrypto(state => state.cryptosData)
+  const loading = useCrypto(state => state.loading)
 
   useEffect(() => {
     console.log("cryptosData updated:", cryptosData);
@@ -27,8 +29,9 @@ export function Result() {
           </div>
         </div>
       ) : (
-        <span>hola</span>
+        <span></span>
       )}
+      {loading && <div className="mt-8"><SyncLoader color="white" /></div>}
     </>
   );
 }
